@@ -1,17 +1,17 @@
 class Cell
 
-  attr_reader :contents
+  attr_reader :content
 
   def initialize
-    @contents = []
+    @content = []
   end
 
   def add_content content
-    @contents << content
+    @content << content
   end
 
   def shoot
-    @contents[0].shoot
+    @content[0].shoot
   end
 
 end
