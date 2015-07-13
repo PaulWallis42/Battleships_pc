@@ -11,6 +11,7 @@ class Water
   def shoot
     fail 'You have already shot here' if hit?
     @hit = true
+    'MISS'
   end
 
 end

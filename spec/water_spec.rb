@@ -12,4 +12,9 @@ describe Water do
     expect(subject.hit?).to eq true
   end
 
+  it 'can not be shot more than once' do
+    subject.shoot
+    expect { subject.shoot }.to raise_error 'You have already shot here'
+  end
+
 end
