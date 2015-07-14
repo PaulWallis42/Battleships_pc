@@ -13,17 +13,17 @@ class Game
     @alternate ? @player1 : @player2
   end
 
-  def p1_shoot opp_board
+  def p1_shoot coordinates, opp_board
     fail 'Not your turn' if @alternate == false
+    result = @player1.shoot coordinates, opp_board
     @alternate = false
-    result = @player1.shoot opp_board
     return winner if result == 'HIT'
   end
 
-  def p2_shoot opp_board
+  def p2_shoot coordinates, opp_board
     fail 'Not your turn' if @alternate
+    result = @player2.shoot coordinates, opp_board
     @alternate = true
-    result = @player2.shoot opp_board
     return winner if result == 'HIT'
   end
 
