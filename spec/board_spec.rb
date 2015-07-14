@@ -10,18 +10,13 @@ describe Board do
   end
 
   it 'can have a cell added' do
-    subject.add_cell cell
+    subject.add_cell :a1, cell
     expect(subject.content.length).to eq 1
   end
 
   it 'content can be shot' do
-    subject.add_cell cell
-    expect(subject.shoot).to eq 'HIT'
-  end
-
-  it 'can place a ship on a cell' do
-    subject.add_cell cell
-    expect(subject.place_ship :ship).to eq true
+    subject.add_cell :a1, cell
+    expect(subject.shoot :a1).to eq 'HIT'
   end
 
 end

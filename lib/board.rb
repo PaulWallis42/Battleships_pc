@@ -3,19 +3,15 @@ class Board
   attr_reader :content
 
   def initialize
-    @content = []
+    @content = {}
   end
 
-  def add_cell cell
-    @content << cell
+  def add_cell coordinate, cell
+    @content[coordinate] = cell
   end
 
-  def place_ship ship
-    @content[0].add_content ship
-  end
-
-  def shoot
-    @content[0].shoot
+  def shoot coordinate
+    @content[coordinate].shoot
   end
 
 end
