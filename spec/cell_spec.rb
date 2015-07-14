@@ -3,14 +3,20 @@ require 'cell'
 describe Cell do
 
   let(:ship) { double :ship, shoot: 'HIT' }
-  let(:cell) { Cell.new ship }
 
-  it 'has content added on creation' do
-    expect(cell.content).to eq ship
+  it 'is empty on creation' do
+    cell = Cell.new
+    expect(cell.content).to eq nil
+  end
+
+  it 'can have content added' do
+    subject.add_content :ship
+    expect(subject.content).to eq :ship
   end
 
   it 'content can be shot' do
-    expect(cell.shoot).to eq 'HIT'
+    subject.add_content ship
+    expect(subject.shoot).to eq 'HIT'
   end
 
 end
