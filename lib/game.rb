@@ -16,13 +16,19 @@ class Game
   def p1_shoot opp_board
     fail 'Not your turn' if @alternate == false
     @alternate = false
-    @player1.shoot opp_board
+    result = @player1.shoot opp_board
+    return winner if result == 'HIT'
   end
 
   def p2_shoot opp_board
     fail 'Not your turn' if @alternate
     @alternate = true
-    @player2.shoot opp_board
+    result = @player2.shoot opp_board
+    return winner if result == 'HIT'
+  end
+
+  def winner
+    'You have won'
   end
 
 end

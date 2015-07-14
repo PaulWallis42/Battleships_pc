@@ -14,17 +14,15 @@ describe Game do
     expect(game.turn).to eq paul
   end
 
-  it 'allows players to shoot' do
-    expect(game.p1_shoot opp_board).to eq 'HIT'
-  end
+  it { expect(game).to respond_to(:p1_shoot).with(1).argument }
 
   it 'alternates turns between the players' do
     game.p1_shoot opp_board
     expect(game.turn).to eq :Computer
   end
 
-  xit 'knows when there is a winner' do
-    game.p1_shoot
+  it 'knows when there is a winner' do
+    expect(game.p1_shoot opp_board).to eq 'You have won'
   end
 
 end
