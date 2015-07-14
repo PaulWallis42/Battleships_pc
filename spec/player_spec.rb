@@ -3,11 +3,10 @@ require 'player'
 describe Player do
 
   let(:board) { double :board, place_ship: true }
-  let(:player) { Player.new 'Paul', board }
+  let(:player) { Player.new board }
   let(:opp_board) { double :opp_board, shoot: 'HIT'}
 
   it 'can be assigned a name and a board' do
-    expect(player.name).to eq 'Paul'
     expect(player.board).to eq board
   end
 
