@@ -12,4 +12,8 @@ class Player
     @board.place_ship ship
   end
 
+  def shoot opp_board
+    opp_board.shoot
+  end
+
 end
