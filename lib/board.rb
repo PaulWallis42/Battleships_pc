@@ -6,8 +6,12 @@ class Board
     @content = []
   end
 
-  def add_content content
-    @content << content
+  def add_cell cell
+    @content << cell
+  end
+
+  def place_ship ship
+    @content[0].add_content ship
   end
 
   def shoot
