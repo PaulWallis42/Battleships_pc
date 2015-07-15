@@ -17,18 +17,26 @@ class Game
     fail 'Not your turn' if @alternate == false
     result = @player1.shoot coordinates, opp_board
     @alternate = false
-    return winner if result == 'HIT'
+    if result == 'HIT'
+      return winner
+    else
+      return result
+    end
   end
 
   def p2_shoot coordinates, opp_board
     fail 'Not your turn' if @alternate
     result = @player2.shoot coordinates, opp_board
     @alternate = true
-    return winner if result == 'HIT'
+    if result == 'HIT'
+      return winner
+    else
+      return result
+    end
   end
 
   def winner
-    'You have won'
+    'HIT....You have won'
   end
 
 end

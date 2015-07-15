@@ -14,6 +14,12 @@ describe Board do
     expect(subject.content.length).to eq 1
   end
 
+  it 'can have multiple cells added' do
+    subject.add_cell :a1, cell
+    subject.add_cell :a2, cell
+    expect(subject.content.length).to eq 2
+  end
+
   it 'content can be shot' do
     subject.add_cell :a1, cell
     expect(subject.shoot :a1).to eq 'HIT'

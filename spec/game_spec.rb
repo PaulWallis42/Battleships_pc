@@ -3,6 +3,8 @@ require 'game'
 describe Game do
   let(:paul) { double :paul, shoot: 'HIT' }
   let(:game) { Game.new paul, :Computer }
+  let(:steph) { double :steph, shoot: 'MISS' }
+  let(:game_1) { Game.new steph, paul }
   let(:opp_board) { double :opp_board }
 
   it 'has two players on creation' do
@@ -21,8 +23,12 @@ describe Game do
     expect(game.turn).to eq :Computer
   end
 
-  it 'knows when there is a winner' do
-    expect(game.p1_shoot :a1, opp_board).to eq 'You have won'
+  it 'knows when there is a winner on a 1 x 1 board' do
+    expect(game.p1_shoot :a1, opp_board).to eq 'HIT....You have won'
   end
 
+  it 'knows when there is a winner on a 2 x 2 board' do
+    expect(game_1.p1_shoot :a1, opp_board).to eq 'MISS'
+    expect(game_1.p2_shoot :a2, opp_board).to eq 'HIT....You have won'
+  end
 end
