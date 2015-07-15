@@ -19,4 +19,10 @@ describe Cell do
     expect(subject.shoot).to eq 'HIT'
   end
 
+  it 'can not be hit more than once' do
+    subject.add_content ship
+    subject.shoot
+    expect { subject.shoot }.to raise_error 'You have already shot here'
+  end
+
 end

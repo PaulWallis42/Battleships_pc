@@ -1,17 +1,22 @@
 class Ship
 
-  def initialize
-    @hit = false
-  end
+  attr_reader :length
 
-  def hit?
-    @hit
+  def initialize length = 1
+    @length = length
   end
 
   def shoot
-    fail 'You have already shot here' if hit?
-    @hit = true
-    'HIT'
+    @length -=1
+    sunk
+  end
+
+  def sunk
+    if @length == 0
+      return 'You have sunk a ship'
+    else
+      return 'HIT'
+    end
   end
 
 end

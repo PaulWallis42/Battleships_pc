@@ -18,9 +18,13 @@ class Game
     result = @player1.shoot coordinates, opp_board
     @alternate = false
     if result == 'HIT'
-      return winner
+      result
+    elsif result == 'MISS'
+      result
+    elsif result == 'You have already shot here'
+      result
     else
-      return result
+      winner
     end
   end
 
@@ -29,14 +33,18 @@ class Game
     result = @player2.shoot coordinates, opp_board
     @alternate = true
     if result == 'HIT'
-      return winner
+      result
+    elsif result == 'MISS'
+      result
+    elsif result == 'You have already shot here'
+      result
     else
-      return result
+      winner
     end
   end
 
   def winner
-    'HIT....You have won'
+    'HIT!!! You have sunk all the ships you win'
   end
 
 end

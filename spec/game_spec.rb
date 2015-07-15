@@ -1,7 +1,7 @@
 require 'game'
 
 describe Game do
-  let(:paul) { double :paul, shoot: 'HIT' }
+  let(:paul) { double :paul, shoot: 'HIT!!! You have sunk all the ships you win' }
   let(:game) { Game.new paul, :Computer }
   let(:steph) { double :steph, shoot: 'MISS' }
   let(:game_1) { Game.new steph, paul }
@@ -24,11 +24,11 @@ describe Game do
   end
 
   it 'knows when there is a winner on a 1 x 1 board' do
-    expect(game.p1_shoot :a1, opp_board).to eq 'HIT....You have won'
+    expect(game.p1_shoot :a1, opp_board).to eq 'HIT!!! You have sunk all the ships you win'
   end
 
   it 'knows when there is a winner on a 2 x 2 board' do
     expect(game_1.p1_shoot :a1, opp_board).to eq 'MISS'
-    expect(game_1.p2_shoot :a2, opp_board).to eq 'HIT....You have won'
+    expect(game_1.p2_shoot :a2, opp_board).to eq 'HIT!!! You have sunk all the ships you win'
   end
 end

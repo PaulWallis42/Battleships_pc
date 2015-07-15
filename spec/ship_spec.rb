@@ -2,19 +2,24 @@ require 'ship'
 
 describe Ship do
 
-  it 'has not been hit on creation' do
-    ship = Ship.new
-    expect(ship.hit?).to eq false
+  let(:ship) { Ship.new 3 }
+
+  it 'can have a length' do
+    expect(ship.length).to eq 3
   end
 
   it 'can be shot' do
-    subject.shoot
-    expect(subject.hit?).to eq true
+    expect(ship.shoot).to eq 'HIT'
   end
 
-  it 'can not be shot more than once' do
-    subject.shoot
-    expect { subject.shoot }.to raise_error 'You have already shot here'
+  it 'can be shot more than once' do
+    ship.shoot
+    expect(ship.length).to eq 2
+  end
+
+  it 'can be sunk' do
+    2.times { ship.shoot }
+    expect(ship.shoot).to eq 'You have sunk a ship'
   end
 
 end

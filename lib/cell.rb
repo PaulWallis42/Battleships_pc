@@ -4,6 +4,7 @@ class Cell
 
   def initialize
     @content = nil
+    @hit = false
   end
 
   def add_content content
@@ -11,7 +12,13 @@ class Cell
   end
 
   def shoot
+    fail 'You have already shot here' if hit?
+    @hit = true
     @content.shoot
+  end
+
+  def hit?
+    @hit
   end
 
 end
